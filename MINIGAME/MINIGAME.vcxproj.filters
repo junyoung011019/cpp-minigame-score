@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Main_Scene">
+      <UniqueIdentifier>{6c178a4e-2b09-4cec-8ecd-134bc36899e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Main_Scene\Main_Object">
+      <UniqueIdentifier>{e2f9857e-76a9-445a-b708-bb58d1c31f12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MineSweeper">
+      <UniqueIdentifier>{e0c7f2fd-0bef-4719-b59c-1c7af1539175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MineSweeper\Land">
+      <UniqueIdentifier>{32e9848c-c933-4c7b-ab1a-b990077578d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MineSweeper\MS_Mgr">
+      <UniqueIdentifier>{253be12f-a9ef-498d-8c6a-fb9546e19b4d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CMain.cpp">
+      <Filter>소스 파일\Main_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CMainBtn.cpp">
+      <Filter>소스 파일\Main_Scene\Main_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="struct.h">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CLand.cpp">
+      <Filter>소스 파일\MineSweeper\Land</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameMgr.cpp">
+      <Filter>소스 파일\MineSweeper\MS_Mgr</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CMain.h">
+      <Filter>소스 파일\Main_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CMainBtn.h">
+      <Filter>소스 파일\Main_Scene\Main_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CLand.h">
+      <Filter>소스 파일\MineSweeper\Land</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameMgr.h">
+      <Filter>소스 파일\MineSweeper\MS_Mgr</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
