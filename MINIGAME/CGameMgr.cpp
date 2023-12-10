@@ -158,21 +158,37 @@ void CGameMgr::Update()
 
 void CGameMgr::Render()
 {
-	//system("cls");
+	// Title: MINE SWEEPER
+	setColor(COLOR::BLUE);
+	gotoxy(RESOLUTION.x / 2 - 36, 0);
+	cout << " __  __  ____  _  _  ____    ___  _    _  ____  ____  ____  ____  ____ ";
+	gotoxy(RESOLUTION.x / 2 - 36, 1);
+	cout << "(  \\/  )(_  _)( \\( )( ___)  / __)( \\/\\/ )( ___)( ___)(  _ \\( ___)(  _ \\";
+	gotoxy(RESOLUTION.x / 2 - 36, 2);
+	cout << " )    (  _)(_  )  (  )__)   \\__ \\ )    (  )__)  )__)  )___/ )__)  )   /";
+	gotoxy(RESOLUTION.x / 2 - 36, 3);
+	cout << "(_/\\/\\_)(____)(_)\\_)(____)  (___/(__/\\__)(____)(____)(__)  (____)(_)\\_)";
+	setColor(COLOR::WHITE);
+
+	// TIME | MINE LEFT
+	gotoxy((RESOLUTION.x / 2) - 12, 5);
+	cout << "TIME : " << tTimeScore << " | " << "MINE LEFT :";
+	if (MINE_NUM - iFlagCnt <= 99 && MINE_NUM - iFlagCnt >= 10 || MINE_NUM - iFlagCnt <= -1 && MINE_NUM - iFlagCnt >= -9)
+		cout << " ";
+	else if (MINE_NUM - iFlagCnt <= 9 && MINE_NUM - iFlagCnt >= 0)
+		cout << "  ";
+	cout << MINE_NUM - iFlagCnt;
+
+	// BOARD
 	for (int i = 0; i < vLandArr.size(); i++) {
 		for (int j = 0; j < vLandArr[i].size(); j++) {
 			vLandArr[i][j]->Render();
 		}
 		cout << endl;
 	}
-	gotoxy((RESOLUTION.x / 2) - 12, MS_COL + 2);
-	cout << "TIME : " << tTimeScore << "\t" << "MINE LEFT :";
-	if (MINE_NUM - iFlagCnt <= 99 && MINE_NUM - iFlagCnt >= 10 || MINE_NUM - iFlagCnt <= -1 && MINE_NUM - iFlagCnt >= -9)
-		cout << " ";
-	else if (MINE_NUM - iFlagCnt <= 9 && MINE_NUM - iFlagCnt >= 0)
-		cout << "  ";
-	cout << MINE_NUM - iFlagCnt;
-	gotoxy((RESOLUTION.x / 2) - 6, MS_COL + 3);
+
+	// HIGH SCORE
+	gotoxy((RESOLUTION.x / 2) - 6, MS_COL + 9);
 	cout << "HIGH SCORE : ";
 	if (iHighScore == -1) cout << "--";
 	else cout << iHighScore << endl;
@@ -186,7 +202,7 @@ void CGameMgr::GameOver()
 		if (iHighScore == -1 || iHighScore > tTimeScore)
 			iHighScore = tTimeScore;
 		Render();
-		gotoxy((RESOLUTION.x / 2) - 4, MS_COL + 1);
+		gotoxy((RESOLUTION.x / 2) - 4, MS_COL + 7);
 		setColor(COLOR::BLUE);
 		cout << "You Win!";
 	}
@@ -198,12 +214,12 @@ void CGameMgr::GameOver()
 			}
 		}
 		Render();
-		gotoxy((RESOLUTION.x / 2) - 5, MS_COL + 1);
+		gotoxy((RESOLUTION.x / 2) - 5, MS_COL + 7);
 		setColor(COLOR::RED);
 		cout << "You Lose...";
 	}
 	setColor(COLOR::WHITE);
-	gotoxy((RESOLUTION.x / 2) - 19, MS_COL + 5);
+	gotoxy((RESOLUTION.x / 2) - 19, MS_COL + 11);
 	cout << "Press Enter to Restart OR ESC to Exit";
 	while (true) {
 		if (_kbhit()) {
