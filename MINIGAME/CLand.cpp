@@ -109,7 +109,7 @@ void CLand::Update()
 void CLand::Render()
 {
 	gotoxy((RESOLUTION.x / 2) + (sPos.x - (MS_ROW / 2)) * 3, sPos.y);
-	if (IsSelect())
+	if (IsSelect() || (IsMine() && IsOpen()))
 		setColor(COLOR::RED);
 	else if (IsFlag())
 		setColor(COLOR::YELLOW);

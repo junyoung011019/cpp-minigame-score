@@ -174,7 +174,7 @@ void CGameMgr::Render()
 	cout << MINE_NUM - iFlagCnt;
 	gotoxy((RESOLUTION.x / 2) - 6, MS_COL + 3);
 	cout << "HIGH SCORE : ";
-	if (iHighScore == -1) cout << "--\n";
+	if (iHighScore == -1) cout << "--";
 	else cout << iHighScore << endl;
 }
 
@@ -183,14 +183,28 @@ void CGameMgr::GameOver()
 	char cInput;
 	bStart = false;
 	if (bWin) {
-		cout << "\t\tYou Win!";
 		if (iHighScore == -1 || iHighScore > tTimeScore)
 			iHighScore = tTimeScore;
+		Render();
+		gotoxy((RESOLUTION.x / 2) - 4, MS_COL + 1);
+		setColor(COLOR::BLUE);
+		cout << "You Win!";
 	}
 	else {
-		cout << "\t\tYou Lose...";
+		for (int i = 0; i < MS_ROW; i++) {
+			for (int j = 0; j < MS_COL; j++) {
+				if (vLandArr[i][j]->IsMine())
+					vLandArr[i][j]->Open();
+			}
+		}
+		Render();
+		gotoxy((RESOLUTION.x / 2) - 5, MS_COL + 1);
+		setColor(COLOR::RED);
+		cout << "You Lose...";
 	}
-	cout << "\n\n\tPress Enter to Restart OR ESC to Exit";
+	setColor(COLOR::WHITE);
+	gotoxy((RESOLUTION.x / 2) - 19, MS_COL + 5);
+	cout << "Press Enter to Restart OR ESC to Exit";
 	while (true) {
 		if (_kbhit()) {
 			cInput = _getch();
