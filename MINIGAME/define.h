@@ -13,6 +13,7 @@
 #define TAB 9
 #define ENTER 13
 #define ESC 27
+#define BACKSPACE 8
 
 // MineSweeper
 #define MS_ROW 16
@@ -47,7 +48,9 @@ enum COLOR {
 	D_RED = 4,
 	BLUE = 9,
 	GREEN = 10,
+	MINT = 11,
 	RED = 12,
+	PINK = 13,
 	YELLOW = 14,
 	WHITE = 15
 };

@@ -21,6 +21,7 @@ CGameMgr::~CGameMgr()
 
 void CGameMgr::Init()
 {
+	PlaySound(TEXT("GameBGM.wav"), NULL, SND_ASYNC || SND_LOOP);
 	// === ¸â¹ö ÃÊ±âÈ­ ===
 	sCurSelect = SPos(0, 0);
 	vLandArr.clear();
@@ -133,6 +134,8 @@ void CGameMgr::Update()
 				}
 				if (!curLndObj->IsFlag()) {
 					curLndObj->Open();
+					if (!curLndObj->IsMine()) {
+					}
 				}
 				break;
 			}
@@ -199,6 +202,7 @@ void CGameMgr::GameOver()
 	char cInput;
 	bStart = false;
 	if (bWin) {
+		PlaySound(TEXT("Gameclear.wav"), NULL, SND_ASYNC);
 		if (iHighScore == -1 || iHighScore > tTimeScore)
 			iHighScore = tTimeScore;
 		Render();
@@ -207,6 +211,7 @@ void CGameMgr::GameOver()
 		cout << "You Win!";
 	}
 	else {
+		PlaySound(TEXT("Gameover.wav"), NULL, SND_ASYNC);
 		for (int i = 0; i < MS_ROW; i++) {
 			for (int j = 0; j < MS_COL; j++) {
 				if (vLandArr[i][j]->IsMine())

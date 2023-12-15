@@ -28,6 +28,9 @@
     <Filter Include="소스 파일\MineSweeper\MS_Mgr">
       <UniqueIdentifier>{253be12f-a9ef-498d-8c6a-fb9546e19b4d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\TypingGame">
+      <UniqueIdentifier>{8cc6dab8-8fe4-46f4-8b7e-d141e2d7fe34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,6 +54,9 @@
     <ClCompile Include="CGameMgr.cpp">
       <Filter>소스 파일\MineSweeper\MS_Mgr</Filter>
     </ClCompile>
+    <ClCompile Include="TypingGame.cpp">
+      <Filter>소스 파일\TypingGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -73,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="CGameMgr.h">
       <Filter>소스 파일\MineSweeper\MS_Mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="function.h">
+      <Filter>소스 파일\TypingGame</Filter>
+    </ClInclude>
+    <ClInclude Include="img.h">
+      <Filter>소스 파일\TypingGame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

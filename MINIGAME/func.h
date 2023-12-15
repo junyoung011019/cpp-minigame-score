@@ -8,3 +8,5 @@ void gotoxy(int x, int y);
 void cursor();
 
 void MineSweeper();
+
+int TypingGame();

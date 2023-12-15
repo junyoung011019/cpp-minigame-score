@@ -26,7 +26,6 @@ void CMain::Init()
         for (int i = (int)MENU_TYPE::MINESWEEPER; i <= (int)MENU_TYPE::BACK; i++) {
             CMainBtn* pMainBtnObj = new CMainBtn;
             pMainBtnObj->SetType(static_cast<MENU_TYPE>(i));
-            pMainBtnObj->UnSelect();
             vMainBtnArr.push_back(pMainBtnObj);
         }
         break;
@@ -46,17 +45,32 @@ void CMain::Init()
         MineSweeper();
         tCurMenu = MENU_TYPE::PLAY;
         Init();
+        PlaySound(TEXT("main.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+        break;
+    case MENU_TYPE::TYPINGGAME:
+        TypingGame();
+        tCurMenu = MENU_TYPE::PLAY;
+        Init();
+        PlaySound(TEXT("main.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
         break;
     default:
         for (int i = 0; i <= (int)MENU_TYPE::QUIT; i++) {
             CMainBtn* pMainBtnObj = new CMainBtn;
             pMainBtnObj->SetType(static_cast<MENU_TYPE>(i));
-            pMainBtnObj->UnSelect();
             vMainBtnArr.push_back(pMainBtnObj);
         }
         break;
     }
-    vMainBtnArr[iSelect]->Select();
+
+    // 메뉴 작업 미완료로 인해 발생하는 예외 처리입니다. 추후 개발이 완료되면 수정할 것을 권장합니다.
+    try {
+        if (vMainBtnArr.size() == 0) throw 0;
+        vMainBtnArr[iSelect]->Select();
+    }
+    catch(int _) {
+        tCurMenu = MENU_TYPE::END;
+        Init();
+    }
 }
 
 void CMain::Update()
@@ -103,6 +117,8 @@ void CMain::Update()
 
 void CMain::Render()
 {
+    // 로그인, 회원가입, 게임 스코어, 개발자 등의 출력 화면 작업 시
+    // 이 함수 안에서 Switch 문을 사용하는 것을 권장합니다
     gotoxy(0, 0);
     cout << "\n\n\n";
     cout << "            ##   ##   ####    ##   #    ####        ####      ##     ##   ##  ######\n";

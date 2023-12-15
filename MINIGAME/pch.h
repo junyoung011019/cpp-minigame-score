@@ -10,6 +10,10 @@
 #include <ctime>
 #include <vector>
 #include <algorithm>
+#include <fstream>
+#include <string>
+#include <chrono>
+#include <consoleapi.h>
 
 #include "define.h"
 #include "struct.h"
