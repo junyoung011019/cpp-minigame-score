@@ -372,6 +372,7 @@ void Record(int _score)
 void Check_Score()
 {
 
+
 	mysql_init(&Conn); // MySQL 정보 초기화
 
 	// 데이터베이스와 연결
@@ -384,6 +385,23 @@ void Check_Score()
 		fprintf(stderr, "Mysql query error:%s", mysql_error(&Conn));
 		return;
 	}
+
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	//하늘 색상 출력
+	SetConsoleTextAttribute(hConsole, 14);
+	cout << "\n\n\n";
+	cout << ":::::::::      :::     ::::    ::: :::    ::: ::::::::::: ::::    :::  :::::::: \n";
+	cout << ":+:    :+:   :+: :+:   :+:+:   :+: :+:   :+:      :+:     :+:+:   :+: :+:    :+: \n";
+	cout << "+:+    +:+  +:+   +:+  :+:+:+  +:+ +:+  +:+       +:+     :+:+:+  +:+ +:+        \n";
+	cout << "+#++:++#:  +#++:++#++: +#+ +:+ +#+ +#++:++        +#+     +#+ +:+ +#+ :#:        \n";
+	cout << "+#+    +#+ +#+     +#+ +#+  +#+#+# +#+  +#+       +#+     +#+  +#+#+# +#+   +#+# \n";
+	cout << "#+#    #+# #+#     #+# #+#   #+#+# #+#   #+#      #+#     #+#   #+#+# #+#    #+# \n";
+	cout << "###    ### ###     ### ###    #### ###    ### ########### ###    ####  ########  \n";
+
+	SetConsoleTextAttribute(hConsole, 15);
+	cout << "\n\n\n\n";
+
+
 
 	cout << "지뢰찾기 역대 기록 " << endl;
 
@@ -451,8 +469,9 @@ void Check_Score()
 	}
 
 	cout << "\n";
+	cout << "\n";
 
-	cout << " 뒤로가기 ";
+	cout << "ESC or ENTER 를 눌러 뒤로 갈 수 있습니다" << endl;
 	char c;
 	while (true) 
 	{
@@ -469,4 +488,86 @@ void Check_Score()
 
 	mysql_free_result(Result);// MySQL C API에서 사용한 메모리를 해제하는 함수
 	mysql_close(ConnPtr); // MySQL 데이터베이스 연결을 닫는 함수
+}
+// 개발자 출력
+void devsINFO()
+{
+
+	cout << "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■";
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■                                                                                                ■" << endl;
+	cout << "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■";
+	gotoxy(0, 1);
+	setColor(MINT);
+	cout << "\t  ::::    ::::     :::     :::::::::  ::::::::::     :::::::::  :::   ::: " << endl;
+	cout << "\t  +:+: :+:+:+    :+: :+:   :+:    :+: :+:            :+:    :+: :+:   :+: " << endl;
+	cout << "\t +:+ +:+:+ +:+  +:+   +:+  +:+    +:+ +:+            +:+    +:+  +:+ +:+  " << endl;
+	cout << "\t +#+  +:+  +#+ +#++:++#++: +#+    +:+ +#++:++#       +#++:++#+    +#++:   " << endl;
+	cout << "\t +#+       +#+ +#+     +#+ +#+    +#+ +#+            +#+    +#+    +#+    " << endl;
+	cout << "\t #+#       #+# #+#     #+# #+#    #+# #+#            #+#    #+#    #+#    " << endl;
+	cout << "\t ###       ### ###     ### #########  ##########     #########     ###    " << endl;
+	setColor(YELLOW);
+	gotoxy(0, 8);
+	cout << "\t      :::::::::  :::::::::: :::     ::: :::::::::: :::::::::   ::::::::  ::::::::::  " << endl
+		<< "\t      +:+    :+: :+:        :+:     :+: :+:        :+:    :+: :+:    :+: :+:        " << endl
+		<< "\t      +:+    +:+ +:+        +:+     +:+ +:+        +:+    +:+ +:+        +:+        " << endl
+		<< "\t      #++:++#:   +#++:++#   +#+     +:+ +#++:++#   +#++:++#:  +#++:++#++ +#++:++#   " << endl
+		<< "\t      +#+    +#+ +#+         +#+   +#+  +#+        +#+    +#+        +#+ +#+        " << endl
+		<< "\t      #+#    #+# #+#          #+#+#+#   #+#        #+#    #+# #+#    #+# #+#        " << endl
+		<< "\t      ###    ### ##########     ###     ########## ###    ###  ########  ########## ";
+	setColor(BLUE);
+	gotoxy(0, 17);
+	cout << "\t\t\t   컴퓨터소프트웨어학과 |   정준영   |  20102112" << endl;
+	cout << "\t\t\t  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─" << endl;
+	cout << "\t\t\t   컴퓨터소프트웨어학과 |   김성철   |  20102049" << endl;
+	cout << "\t\t\t  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─" << endl;
+	cout << "\t\t\t   컴퓨터소프트웨어학과 |   안준섭   |  20102078" << endl;
+	cout << "\t\t\t  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─" << endl;
+	cout << "\t\t\t   컴퓨터소프트웨어학과 |   이희찬   |  20102106" << endl;
+	cout << "\t\t\t  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─" << endl;
+	cout << "\t\t\t   컴퓨터소프트웨어학과 |  장베드로  |  22102197" << endl << endl;
+	setColor(WHITE);
+
+	
+	cout << "\t\t\t       ESC or ENTER 를 눌러 뒤로 갈 수 있습니다";
+	char c;
+	while (true)
+	{
+		if (_kbhit())
+		{
+			c = _getch();
+			if (c == ESC || c == ENTER)
+			{
+				return;
+			}
+		}
+	}
+
+
 }

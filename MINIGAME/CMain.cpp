@@ -47,6 +47,9 @@ void CMain::Init()
         Init();
         break;
     case MENU_TYPE::DEV:
+        devsINFO();
+        tCurMenu = MENU_TYPE::END;
+        Init();
         break;
     case MENU_TYPE::QUIT: //¿Ï·á
         END();
@@ -122,7 +125,7 @@ void CMain::Update()
                 if (vMainBtnArr[iSelect]->GetType() == MENU_TYPE::BACK) {
                     tCurMenu = MENU_TYPE::END;
                 }
-                else if (vMainBtnArr[iSelect]->GetType() == MENU_TYPE::PLAY || vMainBtnArr[iSelect]->GetType() == MENU_TYPE::SCORE && sCurId == " ") {
+                else if ((vMainBtnArr[iSelect]->GetType() == MENU_TYPE::PLAY || vMainBtnArr[iSelect]->GetType() == MENU_TYPE::SCORE)&& sCurId == " ") {
                     bMsg = true;
                     tMsgTimer = clock();
                 }
@@ -163,3 +166,4 @@ void CMain::Render()
         vMainBtnArr[i]->Render();
     }
 }
+

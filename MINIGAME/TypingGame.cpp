@@ -37,11 +37,11 @@ int TypingGame() {
                 system("cls");
                 gotoxy(33, 3);
                 GAMECLER_IMG();
-                gotoxy(42, 18);
                 setColor(PINK);
+
                 int typing_score = end_score_time - start_score_time;
                 Record(typing_score);
-
+                gotoxy(42, 18);
                 cout << "Score : " << typing_score << " 초"; //기록 출력
                 setColor(WHITE);
                 char c;
