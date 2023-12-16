@@ -29,16 +29,22 @@ void CMain::Init()
             vMainBtnArr.push_back(pMainBtnObj);
         }
         break;
-    case MENU_TYPE::LOGIN:
-        // TODO : 각 케이스마다 기능이나 함수를 작성해 주세요.
+    case MENU_TYPE::LOGIN: //완료
+        LOGIN();
+        tCurMenu = MENU_TYPE::END;
+        Init();
         break;
-    case MENU_TYPE::SIGNIN:
+    case MENU_TYPE::SIGNIN: //완료
+        SIGN_UP();
+        tCurMenu = MENU_TYPE::END;
+        Init();
         break;
     case MENU_TYPE::SCORE:
         break;
     case MENU_TYPE::DEV:
         break;
-    case MENU_TYPE::QUIT:
+    case MENU_TYPE::QUIT: //완료
+        END();
         exit(0);
         break;
     case MENU_TYPE::MINESWEEPER:

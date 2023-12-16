@@ -205,6 +205,7 @@ void CGameMgr::GameOver()
 		PlaySound(TEXT("Gameclear.wav"), NULL, SND_ASYNC);
 		if (iHighScore == -1 || iHighScore > tTimeScore)
 			iHighScore = tTimeScore;
+		Record(tTimeScore);
 		Render();
 		gotoxy((RESOLUTION.x / 2) - 4, MS_COL + 7);
 		setColor(COLOR::BLUE);

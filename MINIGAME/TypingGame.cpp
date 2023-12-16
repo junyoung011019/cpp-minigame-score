@@ -39,7 +39,10 @@ int TypingGame() {
                 GAMECLER_IMG();
                 gotoxy(42, 18);
                 setColor(PINK);
-                cout << "Score : " << end_score_time - start_score_time << " 초"; //기록 출력
+                int typing_score = end_score_time - start_score_time;
+                Record(typing_score);
+
+                cout << "Score : " << typing_score << " 초"; //기록 출력
                 setColor(WHITE);
                 char c;
                 while (true) {

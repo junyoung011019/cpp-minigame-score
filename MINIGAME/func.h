@@ -10,3 +10,11 @@ void cursor();
 void MineSweeper();
 
 int TypingGame();
+
+void SIGN_UP();
+
+void LOGIN();
+
+void END();
+
+void Record(int _score);

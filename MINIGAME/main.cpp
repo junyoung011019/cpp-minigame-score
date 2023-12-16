@@ -2,7 +2,24 @@
 
 #include "CMain.h"
 
+#pragma comment(lib, "libmySQL.lib")
+
+
+
+
 int main() {
+
+    ///////////////////////////SQL 연동 확인///////////////////////////
+    MYSQL mysql;
+    mysql_init(&mysql);
+    if (!mysql_real_connect(&mysql, "34.64.226.23", "root", "", "MINIGAME", 3306, NULL, 0)) {
+        cout << "error\n";
+    }
+    else {
+        cout << "success\n";
+    }
+
+
     cursor();
     system("mode con: cols=100 lines=30 | title 미니게임천국");
     PlaySound(TEXT("main.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);

@@ -1,4 +1,2 @@
-﻿  CMain.cpp
-C:\Users\user\Desktop\me\MiniGame\MiniGame\MINIGAME\CMain.cpp(70,15): warning C4101: '_' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Desktop\me\MiniGame\MiniGame\MINIGAME\CMain.cpp(97,54): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  MINIGAME.vcxproj -> C:\Users\user\Desktop\me\MiniGame\MiniGame\x64\Debug\MINIGAME.exe
+﻿  CGameMgr.cpp
+  MINIGAME.vcxproj -> C:\Users\김성철\Documents\GitHub\MiniGame\x64\Debug\MINIGAME.exe
