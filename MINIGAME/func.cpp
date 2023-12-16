@@ -390,20 +390,23 @@ void Check_Score()
 	//하늘 색상 출력
 	SetConsoleTextAttribute(hConsole, 14);
 	cout << "\n\n\n";
-	cout << ":::::::::      :::     ::::    ::: :::    ::: ::::::::::: ::::    :::  :::::::: \n";
-	cout << ":+:    :+:   :+: :+:   :+:+:   :+: :+:   :+:      :+:     :+:+:   :+: :+:    :+: \n";
-	cout << "+:+    +:+  +:+   +:+  :+:+:+  +:+ +:+  +:+       +:+     :+:+:+  +:+ +:+        \n";
-	cout << "+#++:++#:  +#++:++#++: +#+ +:+ +#+ +#++:++        +#+     +#+ +:+ +#+ :#:        \n";
-	cout << "+#+    +#+ +#+     +#+ +#+  +#+#+# +#+  +#+       +#+     +#+  +#+#+# +#+   +#+# \n";
-	cout << "#+#    #+# #+#     #+# #+#   #+#+# #+#   #+#      #+#     #+#   #+#+# #+#    #+# \n";
-	cout << "###    ### ###     ### ###    #### ###    ### ########### ###    ####  ########  \n";
+	cout << "\t:::::::::      :::     ::::    ::: :::    ::: ::::::::::: ::::    :::  :::::::: \n";
+	cout << "\t:+:    :+:   :+: :+:   :+:+:   :+: :+:   :+:      :+:     :+:+:   :+: :+:    :+: \n";
+	cout << "\t+:+    +:+  +:+   +:+  :+:+:+  +:+ +:+  +:+       +:+     :+:+:+  +:+ +:+        \n";
+	cout << "\t+#++:++#:  +#++:++#++: +#+ +:+ +#+ +#++:++        +#+     +#+ +:+ +#+ :#:        \n";
+	cout << "\t+#+    +#+ +#+     +#+ +#+  +#+#+# +#+  +#+       +#+     +#+  +#+#+# +#+   +#+# \n";
+	cout << "\t#+#    #+# #+#     #+# #+#   #+#+# #+#   #+#      #+#     #+#   #+#+# #+#    #+# \n";
+	cout << "\t###    ### ###     ### ###    #### ###    ### ########### ###    ####  ########  \n";
 
 	SetConsoleTextAttribute(hConsole, 15);
 	cout << "\n\n\n\n";
 
-
-
+	setColor(COLOR::BLUE);
+	gotoxy(RESOLUTION.x / 4 - 9, RESOLUTION.y / 2 - 1);
 	cout << "지뢰찾기 역대 기록 " << endl;
+	setColor(COLOR::WHITE);
+	gotoxy(RESOLUTION.x / 4 - 13, RESOLUTION.y / 2);
+	cout << "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─" << endl;
 
 	// 지뢰 찾기 테이블 출력 쿼리 요청
 	const char* mineprintquery = "SELECT * FROM minesweeper_game ORDER BY Score ASC";
@@ -417,27 +420,30 @@ void Check_Score()
 	}
 
 	Result = mysql_store_result(&Conn); //MySQL에서 실행한 쿼리의 결과 집합을 Result에 저장
-
+	gotoxy(RESOLUTION.x / 4 - 9, RESOLUTION.y / 2 + 1);
 	cout << "등수 ";
 	cout << "기록 ";
 	cout << "아이디" << endl;
+	gotoxy(RESOLUTION.x / 4 - 13, RESOLUTION.y / 2 + 2);
+	cout << "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─" << endl;
 	int mine_rank = 1;
 
 
 	// 반복문 내에서 Row 변수를 사용하여 결과 집합에서 한 행씩 데이터를 처리이때, NULL을 만날 때까지 계속 반복
 	while ((Row = mysql_fetch_row(Result)) != NULL)
 	{
+		gotoxy(RESOLUTION.x / 4 - 9, RESOLUTION.y / 2 + mine_rank + 2);
 		cout << mine_rank << "     ";
 		cout << Row[0] << "  ";
 		cout << Row[1] << endl;
 		mine_rank++;
 	}
-
-	cout << "\n";
-	cout << "\n";
-	cout << "\n";
-
+	setColor(COLOR::MINT);
+	gotoxy(RESOLUTION.x - 38, RESOLUTION.y / 2 - 1);
 	cout << "타자게임 역대 기록" << endl;
+	setColor(COLOR::WHITE);
+	gotoxy(RESOLUTION.x - 42, RESOLUTION.y / 2);
+	cout << "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─" << endl;
 
 
 	// 타자 게임 테이블 출력 쿼리 요청
@@ -452,25 +458,27 @@ void Check_Score()
 	}
 
 	Result = mysql_store_result(&Conn); //MySQL에서 실행한 쿼리의 결과 집합을 Result에 저장
-
+	gotoxy(RESOLUTION.x - 38, RESOLUTION.y / 2 + 1);
 	cout << "등수 ";
 	cout << "기록 ";
 	cout << "아이디" << endl;
+	gotoxy(RESOLUTION.x - 42, RESOLUTION.y / 2 + 2);
+	cout << "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─" << endl;
 	int typing_rank = 1;
 	int Rank_Count = 0;
 
 	// 반복문 내에서 Row 변수를 사용하여 결과 집합에서 한 행씩 데이터를 처리이때, NULL을 만날 때까지 계속 반복
 	while ((Row = mysql_fetch_row(Result)) != NULL && typing_rank <= 5)
 	{
+		gotoxy(RESOLUTION.x - 38, RESOLUTION.y / 2 + typing_rank + 2);
 		cout << typing_rank << "     ";
 		cout << Row[0] << "  ";
 		cout << Row[1] << endl;
 		typing_rank++;
 	}
 
-	cout << "\n";
-	cout << "\n";
-
+	
+	gotoxy(RESOLUTION.x / 2 - 20, 26);
 	cout << "ESC or ENTER 를 눌러 뒤로 갈 수 있습니다" << endl;
 	char c;
 	while (true) 
