@@ -42,6 +42,9 @@ void CMain::Init()
         Init();
         break;
     case MENU_TYPE::SCORE:
+        Check_Score();
+        tCurMenu = MENU_TYPE::END;
+        Init();
         break;
     case MENU_TYPE::DEV:
         break;

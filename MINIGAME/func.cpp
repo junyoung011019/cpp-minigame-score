@@ -243,8 +243,8 @@ void LOGIN()
 
 								CMain::GetInst()->SetID(InputId);
 
-								// 5초 대기
-								Sleep(5000);
+								// 3초 대기
+								Sleep(3000);
 
 								break;
 
@@ -368,4 +368,105 @@ void Record(int _score)
 	cout << "\n";
 }
 
+///////////////////////////스코어 보드 확인///////////////////////////
+void Check_Score()
+{
 
+	mysql_init(&Conn); // MySQL 정보 초기화
+
+	// 데이터베이스와 연결
+	ConnPtr = mysql_real_connect(&Conn, "34.64.226.23", "root", "", "MINIGAME", 3306, (char*)NULL, 0);
+	// MySql DB와 연동하기 위한 문
+	//  MYSQL 구조체에 대한 포인터로 즉, 연결 성공 시 구조체가 초기화 호스트명 / 사용자 이름 / 비밀번호 / 스키마 / 포트번호 / 포인터와 숫자 0 모두 C++에서 NULL로 해석
+
+	// 연결 결과 확인. null일 경우 실패
+	if (ConnPtr == NULL) {
+		fprintf(stderr, "Mysql query error:%s", mysql_error(&Conn));
+		return;
+	}
+
+	cout << "지뢰찾기 역대 기록 " << endl;
+
+	// 지뢰 찾기 테이블 출력 쿼리 요청
+	const char* mineprintquery = "SELECT * FROM minesweeper_game ORDER BY Score ASC";
+
+	int mine_stat;
+	mine_stat = mysql_query(&Conn, mineprintquery);
+
+	if (mine_stat != 0) {
+		fprintf(stderr, "Mysql query error:%s\n", mysql_error(ConnPtr));
+		return ;
+	}
+
+	Result = mysql_store_result(&Conn); //MySQL에서 실행한 쿼리의 결과 집합을 Result에 저장
+
+	cout << "등수 ";
+	cout << "기록 ";
+	cout << "아이디" << endl;
+	int mine_rank = 1;
+
+
+	// 반복문 내에서 Row 변수를 사용하여 결과 집합에서 한 행씩 데이터를 처리이때, NULL을 만날 때까지 계속 반복
+	while ((Row = mysql_fetch_row(Result)) != NULL)
+	{
+		cout << mine_rank << "     ";
+		cout << Row[0] << "  ";
+		cout << Row[1] << endl;
+		mine_rank++;
+	}
+
+	cout << "\n";
+	cout << "\n";
+	cout << "\n";
+
+	cout << "타자게임 역대 기록" << endl;
+
+
+	// 타자 게임 테이블 출력 쿼리 요청
+	const char* typingprintquery = "SELECT * FROM typing_word_game ORDER BY Score ASC";
+
+	int type_stat;
+	type_stat = mysql_query(&Conn, typingprintquery);
+
+	if (type_stat != 0) {
+		fprintf(stderr, "Mysql query error:%s\n", mysql_error(ConnPtr));
+		return ;
+	}
+
+	Result = mysql_store_result(&Conn); //MySQL에서 실행한 쿼리의 결과 집합을 Result에 저장
+
+	cout << "등수 ";
+	cout << "기록 ";
+	cout << "아이디" << endl;
+	int typing_rank = 1;
+	int Rank_Count = 0;
+
+	// 반복문 내에서 Row 변수를 사용하여 결과 집합에서 한 행씩 데이터를 처리이때, NULL을 만날 때까지 계속 반복
+	while ((Row = mysql_fetch_row(Result)) != NULL && typing_rank <= 5)
+	{
+		cout << typing_rank << "     ";
+		cout << Row[0] << "  ";
+		cout << Row[1] << endl;
+		typing_rank++;
+	}
+
+	cout << "\n";
+
+	cout << " 뒤로가기 ";
+	char c;
+	while (true) 
+	{
+		if (_kbhit()) 
+		{
+			c = _getch();
+			if (c == ESC || c== ENTER) 
+			{
+				return;
+			}
+		}
+	}
+	
+
+	mysql_free_result(Result);// MySQL C API에서 사용한 메모리를 해제하는 함수
+	mysql_close(ConnPtr); // MySQL 데이터베이스 연결을 닫는 함수
+}

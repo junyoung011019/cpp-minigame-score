@@ -18,3 +18,5 @@ void LOGIN();
 void END();
 
 void Record(int _score);
+
+void Check_Score();
