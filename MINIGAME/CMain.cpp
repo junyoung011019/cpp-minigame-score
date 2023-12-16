@@ -122,7 +122,7 @@ void CMain::Update()
                 if (vMainBtnArr[iSelect]->GetType() == MENU_TYPE::BACK) {
                     tCurMenu = MENU_TYPE::END;
                 }
-                else if (vMainBtnArr[iSelect]->GetType() == MENU_TYPE::PLAY && sCurId == " ") {
+                else if (vMainBtnArr[iSelect]->GetType() == MENU_TYPE::PLAY || vMainBtnArr[iSelect]->GetType() == MENU_TYPE::SCORE && sCurId == " ") {
                     bMsg = true;
                     tMsgTimer = clock();
                 }
