@@ -8,6 +8,7 @@ class CMain
 	int iSelect;
 	MENU_TYPE tCurMenu;
 	string sCurId;
+	bool bMsg;
 public:
 	void Init();
 	void Update();

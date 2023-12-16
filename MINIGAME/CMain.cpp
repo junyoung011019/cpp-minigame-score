@@ -5,6 +5,8 @@
 CMain::CMain()
     : iSelect(0)
     , tCurMenu(MENU_TYPE::END)
+    , sCurId(" ")
+    , bMsg(false)
 {
 }
 
@@ -83,6 +85,12 @@ void CMain::Update()
 {
     char cInput;
     while (true) {
+        static time_t tMsgTimer = 0;
+        if ((clock() - tMsgTimer) / CLOCKS_PER_SEC > 0.5 && bMsg) {
+            tMsgTimer = 0;
+            bMsg = false;
+            break;
+        }
         if (_kbhit()) {
             cInput = _getch();
             if (cInput == -32) {
@@ -111,8 +119,14 @@ void CMain::Update()
                 if (vMainBtnArr[iSelect]->GetType() == MENU_TYPE::BACK) {
                     tCurMenu = MENU_TYPE::END;
                 }
+                else if (vMainBtnArr[iSelect]->GetType() == MENU_TYPE::PLAY && sCurId == " ") {
+                    bMsg = true;
+                    tMsgTimer = clock();
+                }
                 else {
                     tCurMenu = vMainBtnArr[iSelect]->GetType();
+                    bMsg = false;
+                    tMsgTimer = 0;
                 }
                 Init();
                 break;
@@ -125,6 +139,7 @@ void CMain::Render()
 {
     // 로그인, 회원가입, 게임 스코어, 개발자 등의 출력 화면 작업 시
     // 이 함수 안에서 Switch 문을 사용하는 것을 권장합니다
+    system("cls");
     gotoxy(0, 0);
     cout << "\n\n\n";
     cout << "            ##   ##   ####    ##   #    ####        ####      ##     ##   ##  ######\n";
@@ -137,6 +152,9 @@ void CMain::Render()
     cout << "                                     2023 NSU COMPUTER SOFTWARE\n";
     cout << "                                              REVERSE\n\n";
     cout << "                                              VER 1.0\n\n\n";
+    gotoxy(0, 18);
+    if (bMsg) cout << "                                       로그인이 필요합니다!                       ";
+    gotoxy(0, 21);
     for (int i = 0; i < vMainBtnArr.size(); i++) {
         gotoxy(RESOLUTION.x / 2 - 8, i + 20);
         vMainBtnArr[i]->Render();
