@@ -131,22 +131,22 @@ class Sound
 public:
     Sound(string input)
     {
-        if (input == "GameBGM")      //인게임 BGM. 파일 이름 GameBGM.wav로 설정할 것
+        if (input == "GameBGM")      //인게임 BGM
             PlaySound(TEXT("GameBGM.wav"), NULL, SND_ASYNC || SND_LOOP);
 
-        if (input == "Clear")       //게임 클리어 시 나오는 효과음 / 파일 이름 Gameclear.wav로 설정하고 길이는 3초 이내로 할 것
+        if (input == "Clear")       //게임 클리어 시 나오는 효과음
             PlaySound(TEXT("Gameclear.wav"), NULL, SND_ASYNC);
 
-        if (input == "Gameover")    //게임 오버 시 나오는  효과음 / 파일 이름 Gameover.wav로 설정하고 길이는 3초 이내로 할 것
+        if (input == "Gameover")    //게임 오버 시 나오는  효과음
             PlaySound(TEXT("Gameover.wav"), NULL, SND_ASYNC);
 
-        if (input == "Correct")     //숫자가 맞았을 시 나오는 효과음 / 딜레이 0.6초
+        if (input == "Correct")
         {
             Beep(260, 100);
             Beep(330, 100);
             Beep(380, 100);
         }
-        if (input == "Wrong")       //숫자가 틀렸을 시 나오는 효과음 / 딜레이 0.3초
+        if (input == "Wrong")
         {
             Beep(330, 100);
             Beep(330, 100);

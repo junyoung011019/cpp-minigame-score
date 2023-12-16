@@ -38,7 +38,7 @@ int TypingGame() {
                 gotoxy(33, 3);
                 GAMECLER_IMG();
                 setColor(PINK);
-
+                gotoxy(42, 18);
                 int typing_score = end_score_time - start_score_time;
                 Record(typing_score);
                 gotoxy(42, 18);
