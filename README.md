@@ -2,6 +2,7 @@
 
 ![상단 배너](./asset/thumbnail.png)
 
+> ### [📌 유튜브 시연 영상 보기](https://youtu.be/ZMaegZ8kPBg?si=-OLllSi7j72tb1pg) 
 
 <br>
 
@@ -138,6 +139,8 @@
 <br>
 
 ## 7. ▶️ 기능 시연
+
+> ### [📌 유튜브 시연 영상 보기](https://youtu.be/ZMaegZ8kPBg?si=-OLllSi7j72tb1pg) 
 
 <table>
   <tr>
