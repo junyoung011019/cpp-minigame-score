@@ -44,7 +44,7 @@ void SIGN_UP()
 
 	MYSQL mysql;
 	mysql_init(&mysql);
-	if (!mysql_real_connect(&mysql, "34.64.226.23", "root", "", "MINIGAME", 3306, NULL, 0)) {
+	if (!mysql_real_connect(&mysql, "localhost", "root", "1q2w3e4r!", "MINIGAME", 3306, NULL, 0)) {
 		cout << "error\n";
 	}
 	else {
@@ -55,7 +55,7 @@ void SIGN_UP()
 
 	///////////////////////////SQL 쿼리 연동///////////////////////////
 
-	ConnPtr = mysql_real_connect(&Conn, "34.64.226.23", "root", "", "MINIGAME", 3306, (char*)NULL, 0);
+	ConnPtr = mysql_real_connect(&Conn, "localhost", "root", "1q2w3e4r!", "MINIGAME", 3306, (char*)NULL, 0);
 
 	// 연결 결과 확인. null일 경우 실패
 	if (ConnPtr == NULL) {
@@ -170,7 +170,7 @@ void LOGIN()
 	mysql_init(&Conn); // MySQL 정보 초기화
 
 	// 데이터베이스와 연결
-	ConnPtr = mysql_real_connect(&Conn, "34.64.226.23", "root", "", "MINIGAME", 3306, (char*)NULL, 0);
+	ConnPtr = mysql_real_connect(&Conn, "localhost", "root", "1q2w3e4r!", "MINIGAME", 3306, (char*)NULL, 0);
 	// MySql DB와 연동하기 위한 문
 	//  MYSQL 구조체에 대한 포인터로 즉, 연결 성공 시 구조체가 초기화 호스트명 / 사용자 이름 / 비밀번호 / 스키마 / 포트번호 / 포인터와 숫자 0 모두 C++에서 NULL로 해석
 
@@ -376,7 +376,7 @@ void Check_Score()
 	mysql_init(&Conn); // MySQL 정보 초기화
 
 	// 데이터베이스와 연결
-	ConnPtr = mysql_real_connect(&Conn, "34.64.226.23", "root", "", "MINIGAME", 3306, (char*)NULL, 0);
+	ConnPtr = mysql_real_connect(&Conn, "localhost", "root", "1q2w3e4r!", "MINIGAME", 3306, (char*)NULL, 0);
 	// MySql DB와 연동하기 위한 문
 	//  MYSQL 구조체에 대한 포인터로 즉, 연결 성공 시 구조체가 초기화 호스트명 / 사용자 이름 / 비밀번호 / 스키마 / 포트번호 / 포인터와 숫자 0 모두 C++에서 NULL로 해석
 
@@ -501,7 +501,7 @@ void Check_Score()
 void devsINFO()
 {
 
-	cout << "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■";
+	cout << "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■";
 	cout << "■                                                                                                ■" << endl;
 	cout << "■                                                                                                ■" << endl;
 	cout << "■                                                                                                ■" << endl;
@@ -516,7 +516,7 @@ void devsINFO()
 	cout << "■                                                                                                ■" << endl;
 	cout << "■                                                                                                ■" << endl;
 	cout << "■                                                                                                ■" << endl;
-	cout << "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■" << endl;
+	cout << "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■" << endl;
 	cout << "■                                                                                                ■" << endl;
 	cout << "■                                                                                                ■" << endl;
 	cout << "■                                                                                                ■" << endl;
@@ -530,7 +530,7 @@ void devsINFO()
 	cout << "■                                                                                                ■" << endl;
 	cout << "■                                                                                                ■" << endl;
 	cout << "■                                                                                                ■" << endl;
-	cout << "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■";
+	cout << "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■";
 	gotoxy(0, 1);
 	setColor(MINT);
 	cout << "\t  ::::    ::::     :::     :::::::::  ::::::::::     :::::::::  :::   ::: " << endl;

@@ -12,7 +12,7 @@ int main() {
     ///////////////////////////SQL 연동 확인///////////////////////////
     MYSQL mysql;
     mysql_init(&mysql);
-    if (!mysql_real_connect(&mysql, "34.64.226.23", "root", "", "MINIGAME", 3306, NULL, 0)) {
+    if (!mysql_real_connect(&mysql, "localhost", "root", "1q2w3e4r!", "MINIGAME", 3306, NULL, 0)) {
         cout << "error\n";
     }
     else {
